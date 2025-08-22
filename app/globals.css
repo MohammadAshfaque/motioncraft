@@ -1,0 +1,422 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.5);
+}
+
+/* Animation background styles */
+.animated-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Background patterns */
+.bg-pulsing-gradient {
+  background: linear-gradient(45deg, #f093fb, #f5576c, #4facfe, #00f2fe);
+  background-size: 400% 400%;
+  animation: gradient-shift 8s ease infinite;
+}
+
+.bg-aurora {
+  background:
+    radial-gradient(700px 300px at 10% 50%, rgba(255, 0, 153, 0.28), transparent 60%),
+    radial-gradient(600px 280px at 90% 40%, rgba(0, 204, 255, 0.28), transparent 60%),
+    radial-gradient(500px 240px at 50% 80%, rgba(0, 255, 170, 0.18), transparent 60%),
+    linear-gradient(180deg, #070b18, #0d1328 60%, #0a1122);
+  animation: aurora 14s ease-in-out infinite;
+}
+
+.bg-liquid-gradient {
+  background:
+    radial-gradient(600px 300px at 20% 30%, rgba(255, 0, 153, 0.22), transparent 60%),
+    radial-gradient(600px 300px at 80% 70%, rgba(0, 204, 255, 0.22), transparent 60%),
+    linear-gradient(120deg, #0b1020, #101a32);
+  animation: liquid-flow 16s ease-in-out infinite;
+}
+
+.bg-matrix-rain {
+  background: #000;
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-matrix-rain::before {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: 0;
+  right: 0;
+  height: 200%;
+  background-image: linear-gradient(90deg, transparent 30%, rgba(0, 255, 0, 0.06) 50%, transparent 70%);
+  animation: matrix-rain 3s linear infinite;
+}
+
+.bg-wave-animation {
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-wave-animation::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.22) 50%, transparent 100%);
+  animation: wave-slide 4s ease-in-out infinite;
+}
+
+.bg-particle-field {
+  background: radial-gradient(ellipse at center, #0b1020 0%, #000 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-particle-field::before,
+.bg-particle-field::after {
+  content: '';
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: white;
+  border-radius: 50%;
+  animation: particles-float 15s linear infinite;
+}
+
+.bg-particle-field::before {
+  top: 15%;
+  left: 12%;
+  animation-delay: 0s;
+}
+
+.bg-particle-field::after {
+  top: 70%;
+  right: 20%;
+  animation-delay: 7s;
+}
+
+.bg-neon-grid {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(0, 255, 255, 0.08) 0 3px, transparent 3px) 0 0/36px 36px,
+    linear-gradient(135deg, #08111f, #0e1a2f);
+  animation: neon-glow 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.25));
+}
+
+.bg-geometric-spin {
+  background: #0f172a;
+  position: relative;
+}
+
+.bg-geometric-spin::before {
+  content: '';
+  position: absolute;
+  inset: 12% 12% auto auto;
+  width: 60%;
+  height: 60%;
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  animation: geometric-spin 12s linear infinite;
+}
+
+.bg-geometric-spin::after {
+  content: '';
+  position: absolute;
+  inset: 22% 22% auto auto;
+  width: 40%;
+  height: 40%;
+  border: 2px solid rgba(255, 255, 255, 0.18);
+  animation: geometric-spin 8s linear infinite reverse;
+}
+
+.bg-ripple-pulse {
+  position: relative;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.08), transparent 50%), #0b1020;
+}
+
+.bg-ripple-pulse::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.2), transparent 60%);
+  animation: ripple-pulse 2.8s ease-in-out infinite;
+  mix-blend-mode: screen;
+}
+
+.bg-starfield {
+  background:
+    radial-gradient(2px 2px at 20% 30%, rgba(255, 255, 255, 0.8) 49%, transparent 51%) 0 0/auto,
+    radial-gradient(1.5px 1.5px at 60% 70%, rgba(255, 255, 255, 0.7) 49%, transparent 51%) 0 0/auto,
+    radial-gradient(1px 1px at 80% 20%, rgba(255, 255, 255, 0.6) 49%, transparent 51%) 0 0/auto,
+    #000;
+  animation: starfield-drift 20s linear infinite;
+}
+
+/* Preview mode styles: keep UI dark text; no global color swap */
+
+/* === User Provided Categorized Animations === */
+/* Smooth Gradient Animations */
+.flowing-colors { background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #f9ca24); background-size: 400% 400%; animation: flowingColors 4s ease infinite; }
+@keyframes flowingColors { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+
+.color-wave { background: linear-gradient(90deg, #667eea, #764ba2, #667eea, #764ba2); background-size: 200% 100%; animation: colorWave 3s ease-in-out infinite; }
+@keyframes colorWave { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
+
+.breathing-gradient { background: radial-gradient(circle, #667eea 0%, #764ba2 100%); animation: breathe 2.5s ease-in-out infinite alternate; }
+@keyframes breathe { 0%{transform:scale(1);opacity:.8} 100%{transform:scale(1.05);opacity:1} }
+
+.morphing-gradient { background: linear-gradient(45deg, #667eea, #764ba2); animation: morphGradient 4s ease-in-out infinite; }
+@keyframes morphGradient { 0%{background:linear-gradient(45deg,#667eea,#764ba2)} 25%{background:linear-gradient(135deg,#ff6b6b,#feca57)} 50%{background:linear-gradient(225deg,#48cae4,#023047)} 75%{background:linear-gradient(315deg,#06ffa5,#0d7377)} 100%{background:linear-gradient(45deg,#667eea,#764ba2)} }
+
+/* Geometric Patterns */
+.rotating-conic { background: conic-gradient(from 0deg, #ff0080, #ff8c00, #40ff00, #00ff80, #0080ff, #8000ff, #ff0080); animation: rotateConic 3s linear infinite; }
+@keyframes rotateConic { 0%{transform:rotate(0)} 100%{transform:rotate(360deg)} }
+
+.kaleidoscope { background: conic-gradient(from 45deg, #ff6b6b, #4ecdc4, #45b7d1, #f9ca24, #667eea, #764ba2); animation: kaleidoscope 4s ease-in-out infinite; }
+@keyframes kaleidoscope { 0%{transform:rotate(0) scale(1)} 50%{transform:rotate(180deg) scale(1.1)} 100%{transform:rotate(360deg) scale(1)} }
+
+.diagonal-sweep { background: linear-gradient(135deg, transparent 0%, #ff6b6b 20%, #4ecdc4 40%, #45b7d1 60%, #f9ca24 80%, transparent 100%); background-size: 300% 300%; animation: diagonalSweep 3s linear infinite; }
+@keyframes diagonalSweep { 0%{background-position:-100% -100%} 100%{background-position:200% 200%} }
+
+.gradient-mesh { background: radial-gradient(circle at 0% 0%, #ff6b6b 0%, transparent 25%), radial-gradient(circle at 100% 0%, #4ecdc4 0%, transparent 25%), radial-gradient(circle at 0% 100%, #45b7d1 0%, transparent 25%), radial-gradient(circle at 100% 100%, #f9ca24 0%, transparent 25%), linear-gradient(45deg, #667eea, #764ba2); animation: gradientMesh 5s ease-in-out infinite; }
+@keyframes gradientMesh { 0%,100%{background-size:100% 100%,100% 100%,100% 100%,100% 100%,100% 100%} 50%{background-size:150% 150%,150% 150%,150% 150%,150% 150%,100% 100%} }
+
+/* Pulsing & Radial Effects */
+.pulsing-orb { background: radial-gradient(circle at center, #ff6b6b 0%, #4ecdc4 30%, #45b7d1 60%, #1a1a2e 100%); animation: pulseOrb 2.5s ease-in-out infinite; }
+@keyframes pulseOrb { 0%,100%{background-size:100% 100%} 50%{background-size:200% 200%} }
+
+.radial-pulse { background: radial-gradient(circle at 50% 50%, #ff6b6b 0%, transparent 50%), radial-gradient(circle at 80% 20%, #4ecdc4 0%, transparent 50%), radial-gradient(circle at 20% 80%, #45b7d1 0%, transparent 50%), #1a1a2e; animation: radialPulse 4s ease-in-out infinite; }
+@keyframes radialPulse { 0%,100%{background:radial-gradient(circle at 50% 50%, #ff6b6b 0%, transparent 30%), radial-gradient(circle at 80% 20%, #4ecdc4 0%, transparent 30%), radial-gradient(circle at 20% 80%, #45b7d1 0%, transparent 30%), #1a1a2e} 50%{background:radial-gradient(circle at 50% 50%, #ff6b6b 0%, transparent 60%), radial-gradient(circle at 80% 20%, #4ecdc4 0%, transparent 60%), radial-gradient(circle at 20% 80%, #45b7d1 0%, transparent 60%), #1a1a2e} }
+
+.concentric-rings { background: radial-gradient(circle, transparent 20%, #ff6b6b 20%, #ff6b6b 30%, transparent 30%, transparent 50%, #4ecdc4 50%, #4ecdc4 60%, transparent 60%); animation: concentricRings 3s ease-in-out infinite; }
+@keyframes concentricRings { 0%,100%{transform:scale(1)} 50%{transform:scale(1.2)} }
+
+.ripple-effect { background: radial-gradient(circle at center, #667eea 0%, transparent 40%); animation: ripple 2s ease-out infinite; }
+@keyframes ripple { 0%{background-size:0% 0%;opacity:1} 100%{background-size:300% 300%;opacity:0} }
+
+/* Futuristic & Neon Effects */
+.neon-glow { background: linear-gradient(45deg, #ff0080, #00ff80, #0080ff, #ff8000); background-size: 300% 300%; animation: neonGlow 3s ease-in-out infinite; box-shadow: inset 0 0 50px rgba(255,255,255,.1); }
+@keyframes neonGlow { 0%,100%{background-position:0% 50%;box-shadow:inset 0 0 50px rgba(255,0,128,.3),0 0 30px rgba(255,0,128,.5)} 25%{background-position:100% 0%;box-shadow:inset 0 0 50px rgba(0,255,128,.3),0 0 30px rgba(0,255,128,.5)} 50%{background-position:100% 100%;box-shadow:inset 0 0 50px rgba(0,128,255,.3),0 0 30px rgba(0,128,255,.5)} 75%{background-position:0% 100%;box-shadow:inset 0 0 50px rgba(255,128,0,.3),0 0 30px rgba(255,128,0,.5)} }
+
+
+
+.cyber-grid { background: linear-gradient(90deg, transparent 0%, #00ff88 50%, transparent 100%), linear-gradient(0deg, transparent 0%, #0088ff 50%, transparent 100%), radial-gradient(circle at center, #1a1a2e 0%, #0a0a0f 100%); background-size: 50px 100%, 100% 50px, 100% 100%; animation: cyberGrid 4s linear infinite; }
+@keyframes cyberGrid { 0%{background-position:0% 0%,0% 0%,0% 0%} 100%{background-position:100% 0%,0% 100%,0% 0%} }
+
+
+
+/* Fix missing keyframes for other animations */
+@keyframes flowingColors { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+@keyframes colorWave { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
+@keyframes breathe { 0%{transform:scale(1);opacity:.8} 100%{transform:scale(1.05);opacity:1} }
+@keyframes morphGradient { 0%{background:linear-gradient(45deg,#667eea,#764ba2)} 25%{background:linear-gradient(135deg,#ff6b6b,#feca57)} 50%{background:linear-gradient(225deg,#48cae4,#023047)} 75%{background:linear-gradient(315deg,#06ffa5,#0d7377)} 100%{background:linear-gradient(45deg,#667eea,#764ba2)} }
+@keyframes rotateConic { 0%{transform:rotate(0)} 100%{transform:rotate(360deg)} }
+@keyframes kaleidoscope { 0%{transform:rotate(0) scale(1)} 50%{transform:rotate(180deg) scale(1.1)} 100%{transform:rotate(360deg) scale(1)} }
+@keyframes diagonalSweep { 0%{background-position:-100% -100%} 100%{background-position:200% 200%} }
+@keyframes gradientMesh { 0%,100%{background-size:100% 100%,100% 100%,100% 100%,100% 100%,100% 100%} 50%{background-size:150% 150%,150% 150%,150% 150%,150% 150%,100% 100%} }
+@keyframes pulseOrb { 0%,100%{background-size:100% 100%} 50%{background-size:200% 200%} }
+@keyframes radialPulse { 0%,100%{background:radial-gradient(circle at 50% 50%, #ff6b6b 0%, transparent 30%), radial-gradient(circle at 80% 20%, #4ecdc4 0%, transparent 30%), radial-gradient(circle at 20% 80%, #45b7d1 0%, transparent 30%), #1a1a2e} 50%{background:radial-gradient(circle at 50% 50%, #ff6b6b 0%, transparent 60%), radial-gradient(circle at 80% 20%, #4ecdc4 0%, transparent 60%), radial-gradient(circle at 20% 80%, #45b7d1 0%, transparent 60%), #1a1a2e} }
+@keyframes concentricRings { 0%,100%{transform:scale(1)} 50%{transform:scale(1.2)} }
+@keyframes ripple { 0%{background-size:0% 0%;opacity:1} 100%{background-size:300% 300%;opacity:0} }
+@keyframes aurora { 0%,100%{background-position:0% 0%;filter:hue-rotate(0deg)} 25%{background-position:100% 0%;filter:hue-rotate(90deg)} 50%{background-position:100% 100%;filter:hue-rotate(180deg)} 75%{background-position:0% 100%;filter:hue-rotate(270deg)} }
+@keyframes plasmaFlow { 0%,100%{background:radial-gradient(circle at 20% 80%, #ff6b6b 0%, transparent 50%), radial-gradient(circle at 80% 20%, #4ecdc4 0%, transparent 50%), radial-gradient(circle at 40% 40%, #45b7d1 0%, transparent 50%), radial-gradient(circle at 60% 60%, #f9ca24 0%, transparent 50%), #0a0a0a} 33%{background:radial-gradient(circle at 80% 20%, #ff6b6b 0%, transparent 60%), radial-gradient(circle at 20% 80%, #4ecdc4 0%, transparent 60%), radial-gradient(circle at 60% 60%, #45b7d1 0%, transparent 60%), radial-gradient(circle at 40% 40%, #f9ca24 0%, transparent 60%), #0a0a0a} 66%{background:radial-gradient(circle at 60% 60%, #ff6b6b 0%, transparent 50%), radial-gradient(circle at 80% 20%, #4ecdc4 0%, transparent 50%), radial-gradient(circle at 40% 40%, #45b7d1 0%, transparent 50%), radial-gradient(circle at 60% 60%, #f9ca24 0%, transparent 50%), #0a0a0a} }
+@keyframes liquidMotion { 0%{background-position:0% 50%;border-radius:15px} 33%{background-position:100% 50%;border-radius:50px 15px 50px 15px} 66%{background-position:0% 100%;border-radius:15px 50px 15px 50px} 100%{background-position:0% 50%;border-radius:15px} }
+@keyframes oceanWaves { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
+@keyframes waveShimmer { 0%,100%{opacity:.3;transform:translateY(0%)} 50%{opacity:.8;transform:translateY(-20%)} }
+@keyframes floralSpiral { 0%{transform:rotate(0deg)} 100%{transform:rotate(360deg)} }
+@keyframes geometricMosaic { 0%{background-position:0 0,30px 30px,30px 30px,0 0} 100%{background-position:60px 60px,90px 90px,90px 90px,60px 60px} }
+@keyframes artisticBrush { 0%,100%{background-size:100% 100%,100% 100%,100% 100%} 50%{background-size:150% 150%,150% 150%,150% 150%} }
+@keyframes vintageTexture { 0%{background-position:0 0,20px 20px,20px 20px,0 0} 100%{background-position:40px 40px,60px 60px,60px 60px,40px 40px} }
+@keyframes modernDots { 0%,100%{background-size:50px 50px} 50%{background-size:60px 60px} }
+@keyframes elegantLines { 0%{background-position:0 0} 100%{background-position:24px 24px} }
+@keyframes cosmicSwirl { 0%{transform:rotate(0deg)} 100%{transform:rotate(360deg)} }
+@keyframes natureInspired { 0%,100%{background-size:100% 100%,100% 100%,100% 100%} 50%{background-size:120% 120%,120% 120%,120% 120%} }
+@keyframes neonPulse { 0%,100%{background-position:0% 50%;box-shadow:0 0 20px rgba(255,0,128,.5)} 50%{background-position:100% 50%;box-shadow:0 0 40px rgba(0,255,128,.8)} }
+@keyframes energyField { 0%,100%{background-size:100% 100%;opacity:.8} 50%{background-size:150% 150%;opacity:1} }
+@keyframes magneticPull { 0%,100%{background-size:100% 100%;transform:scale(1)} 50%{background-size:80% 80%;transform:scale(1.1)} }
+@keyframes quantumLeap { 0%,100%{background-position:0% 50%;filter:hue-rotate(0deg)} 50%{background-position:100% 50%;filter:hue-rotate(180deg)} }
+@keyframes timeWarp { 0%{transform:rotate(0deg) scale(1)} 50%{transform:rotate(180deg) scale(1.2)} 100%{transform:rotate(360deg) scale(1)} }
+@keyframes fractalGrowth { 0%,100%{background-size:100px 100px} 50%{background-size:150px 150px} }
+@keyframes symmetryMirror { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
+@keyframes tessellation { 0%{background-position:0 0,40px 40px,40px 40px,0 0} 100%{background-position:80px 80px,120px 120px,120px 120px,80px 80px} }
+@keyframes polygonShift { 0%{transform:rotate(0deg)} 100%{transform:rotate(360deg)} }
+@keyframes geometricFlow { 0%,100%{background-size:100% 100%,100% 100%,100% 100%} 50%{background-size:130% 130%,130% 130%,130% 130%} }
+@keyframes sunsetGlow { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
+@keyframes oceanDepths { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
+@keyframes forestMist { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
+@keyframes desertSand { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
+@keyframes auroraDream { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
+
+/* Nature & Organic Effects */
+.aurora { background: linear-gradient(45deg, rgba(0,255,150,.8) 0%, rgba(0,150,255,.8) 25%, rgba(150,0,255,.8) 50%, rgba(255,0,150,.8) 75%, rgba(0,255,150,.8) 100%); background-size:300% 300%; animation: aurora 8s ease-in-out infinite; }
+@keyframes aurora { 0%,100%{background-position:0% 0%;filter:hue-rotate(0deg)} 25%{background-position:100% 0%;filter:hue-rotate(90deg)} 50%{background-position:100% 100%;filter:hue-rotate(180deg)} 75%{background-position:0% 100%;filter:hue-rotate(270deg)} }
+
+.plasma-flow { background: radial-gradient(circle at 20% 80%, #ff6b6b 0%, transparent 50%), radial-gradient(circle at 80% 20%, #4ecdc4 0%, transparent 50%), radial-gradient(circle at 40% 40%, #45b7d1 0%, transparent 50%), radial-gradient(circle at 60% 60%, #f9ca24 0%, transparent 50%), #0a0a0a; animation: plasmaFlow 6s ease-in-out infinite; }
+@keyframes plasmaFlow { 0%,100%{background:radial-gradient(circle at 20% 80%, #ff6b6b 0%, transparent 50%), radial-gradient(circle at 80% 20%, #4ecdc4 0%, transparent 50%), radial-gradient(circle at 40% 40%, #45b7d1 0%, transparent 50%), radial-gradient(circle at 60% 60%, #f9ca24 0%, transparent 50%), #0a0a0a} 33%{background:radial-gradient(circle at 80% 20%, #ff6b6b 0%, transparent 60%), radial-gradient(circle at 20% 80%, #4ecdc4 0%, transparent 60%), radial-gradient(circle at 60% 60%, #45b7d1 0%, transparent 60%), radial-gradient(circle at 40% 40%, #f9ca24 0%, transparent 60%), #0a0a0a} 66%{background:radial-gradient(circle at 60% 60%, #ff6b6b 0%, transparent 50%), radial-gradient(circle at 40% 40%, #4ecdc4 0%, transparent 50%), radial-gradient(circle at 20% 80%, #45b7d1 0%, transparent 50%), radial-gradient(circle at 80% 20%, #f9ca24 0%, transparent 50%), #0a0a0a} }
+
+.liquid-motion { background: linear-gradient(45deg, #667eea 0%, #764ba2 25%, #ff6b6b 50%, #4ecdc4 75%, #45b7d1 100%); background-size:400% 400%; animation: liquidMotion 6s ease-in-out infinite; }
+@keyframes liquidMotion { 0%{background-position:0% 50%;border-radius:15px} 33%{background-position:100% 50%;border-radius:50px 15px 50px 15px} 66%{background-position:0% 100%;border-radius:15px 50px 15px 50px} 100%{background-position:0% 50%;border-radius:15px} }
+
+.ocean-waves { background: linear-gradient(45deg, #1e3c72, #2a5298, #1e3c72, #2a5298); background-size:400% 400%; animation: oceanWaves 4s ease-in-out infinite; position: relative; }
+.ocean-waves::before { content:''; position:absolute; inset:0; background: radial-gradient(ellipse at bottom, rgba(255,255,255,.1) 0%, transparent 70%); animation: waveShimmer 3s ease-in-out infinite; }
+@keyframes oceanWaves { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
+@keyframes waveShimmer { 0%,100%{opacity:.3;transform:translateY(0%)} 50%{opacity:.8;transform:translateY(-20%)} }
+
+/* Decorative Patterns */
+.floral-spiral { background: conic-gradient(from 0deg, #ff6b9d, #c44569, #f39c12, #e74c3c, #9b59b6, #3498db, #1abc9c, #ff6b9d); animation: floralSpiral 8s linear infinite; }
+@keyframes floralSpiral { 0%{transform:rotate(0deg)} 100%{transform:rotate(360deg)} }
+
+.geometric-mosaic { background: linear-gradient(45deg, #ff6b6b 25%, transparent 25%), linear-gradient(-45deg, #4ecdc4 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #45b7d1 75%), linear-gradient(-45deg, transparent 75%, #f9ca24 75%); background-size: 60px 60px; animation: geometricMosaic 4s linear infinite; }
+@keyframes geometricMosaic { 0%{background-position:0 0,30px 30px,30px 30px,0 0} 100%{background-position:60px 60px,90px 90px,90px 90px,60px 60px} }
+
+.artistic-brush { background: radial-gradient(ellipse at 20% 80%, #ff6b6b 0%, transparent 50%), radial-gradient(ellipse at 80% 20%, #4ecdc4 0%, transparent 50%), radial-gradient(ellipse at 40% 40%, #45b7d1 0%, transparent 50%); animation: artisticBrush 6s ease-in-out infinite; }
+@keyframes artisticBrush { 0%,100%{background-size:100% 100%,100% 100%,100% 100%} 50%{background-size:150% 150%,150% 150%,150% 150%} }
+
+.vintage-texture { background: linear-gradient(45deg, #d4a574 25%, transparent 25%), linear-gradient(-45deg, #8b4513 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #cd853f 75%), linear-gradient(-45deg, transparent 75%, #daa520 75%); background-size: 40px 40px; animation: vintageTexture 5s linear infinite; }
+@keyframes vintageTexture { 0%{background-position:0 0,20px 20px,20px 20px,0 0} 100%{background-position:40px 40px,60px 60px,60px 60px,40px 40px} }
+
+.modern-dots { background: radial-gradient(circle at 25% 25%, #ff6b6b 2px, transparent 2px), radial-gradient(circle at 75% 75%, #4ecdc4 2px, transparent 2px), radial-gradient(circle at 50% 50%, #45b7d1 2px, transparent 2px); background-size: 50px 50px; animation: modernDots 3s ease-in-out infinite; }
+@keyframes modernDots { 0%,100%{background-size:50px 50px} 50%{background-size:60px 60px} }
+
+.elegant-lines { background: repeating-linear-gradient(45deg, transparent 0px, #ff6b6b 10px, #ff6b6b 12px), repeating-linear-gradient(-45deg, transparent 0px, #4ecdc4 10px, #4ecdc4 12px); animation: elegantLines 4s linear infinite; }
+@keyframes elegantLines { 0%{background-position:0 0} 100%{background-position:24px 24px} }
+
+.cosmic-swirl { background: conic-gradient(from 0deg, #1a1a2e, #16213e, #0f3460, #533483, #1a1a2e); animation: cosmicSwirl 10s linear infinite; }
+@keyframes cosmicSwirl { 0%{transform:rotate(0deg)} 100%{transform:rotate(360deg)} }
+
+.nature-inspired { background: radial-gradient(ellipse at 30% 70%, #2d5a27 0%, transparent 50%), radial-gradient(ellipse at 70% 30%, #4a7c59 0%, transparent 50%), radial-gradient(ellipse at 50% 50%, #6b8e23 0%, transparent 50%); animation: natureInspired 7s ease-in-out infinite; }
+@keyframes natureInspired { 0%,100%{background-size:100% 100%,100% 100%,100% 100%} 50%{background-size:120% 120%,120% 120%,120% 120%} }
+
+/* Additional Effects */
+.neon-pulse { background: linear-gradient(45deg, #ff0080, #00ff80, #0080ff, #ff8000); background-size: 300% 300%; animation: neonPulse 3s ease-in-out infinite; box-shadow: 0 0 20px rgba(255, 0, 128, 0.5); }
+@keyframes neonPulse { 0%,100%{background-position:0% 50%;box-shadow:0 0 20px rgba(255,0,128,.5)} 50%{background-position:100% 50%;box-shadow:0 0 40px rgba(0,255,128,.8)} }
+
+.energy-field { background: radial-gradient(circle at center, #ff6b6b 0%, #4ecdc4 30%, #45b7d1 60%, transparent 100%); animation: energyField 4s ease-in-out infinite; }
+@keyframes energyField { 0%,100%{background-size:100% 100%;opacity:.8} 50%{background-size:150% 150%;opacity:1} }
+
+.magnetic-pull { background: radial-gradient(ellipse at center, #667eea 0%, transparent 70%); animation: magneticPull 5s ease-in-out infinite; }
+@keyframes magneticPull { 0%,100%{background-size:100% 100%;transform:scale(1)} 50%{background-size:80% 80%;transform:scale(1.1)} }
+
+.quantum-leap { background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #f9ca24); background-size: 400% 400%; animation: quantumLeap 6s ease-in-out infinite; }
+@keyframes quantumLeap { 0%,100%{background-position:0% 50%;filter:hue-rotate(0deg)} 50%{background-position:100% 50%;filter:hue-rotate(180deg)} }
+
+.time-warp { background: conic-gradient(from 0deg, #ff0080, #00ff80, #0080ff, #ff8000, #ff0080); animation: timeWarp 8s linear infinite; }
+@keyframes timeWarp { 0%{transform:rotate(0deg) scale(1)} 50%{transform:rotate(180deg) scale(1.2)} 100%{transform:rotate(360deg) scale(1)} }
+
+/* Additional Geometric */
+.fractal-growth { background: radial-gradient(circle at 25% 25%, #ff6b6b 0%, transparent 25%), radial-gradient(circle at 75% 75%, #4ecdc4 0%, transparent 25%), radial-gradient(circle at 50% 50%, #45b7d1 0%, transparent 25%); background-size: 100px 100px; animation: fractalGrowth 7s ease-in-out infinite; }
+@keyframes fractalGrowth { 0%,100%{background-size:100px 100px} 50%{background-size:150px 150px} }
+
+.symmetry-mirror { background: linear-gradient(45deg, #ff6b6b 0%, #4ecdc4 50%, #45b7d1 100%); background-size: 200% 200%; animation: symmetryMirror 5s ease-in-out infinite; }
+@keyframes symmetryMirror { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
+
+.tessellation { background: linear-gradient(45deg, #ff6b6b 25%, transparent 25%), linear-gradient(-45deg, #4ecdc4 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #45b7d1 75%), linear-gradient(-45deg, transparent 75%, #f9ca24 75%); background-size: 80px 80px; animation: tessellation 6s linear infinite; }
+@keyframes tessellation { 0%{background-position:0 0,40px 40px,40px 40px,0 0} 100%{background-position:80px 80px,120px 120px,120px 120px,80px 80px} }
+
+.polygon-shift { background: conic-gradient(from 0deg, #ff6b6b, #4ecdc4, #45b7d1, #f9ca24, #667eea, #ff6b6b); animation: polygonShift 9s linear infinite; }
+@keyframes polygonShift { 0%{transform:rotate(0deg)} 100%{transform:rotate(360deg)} }
+
+.geometric-flow { background: radial-gradient(ellipse at 20% 80%, #ff6b6b 0%, transparent 50%), radial-gradient(ellipse at 80% 20%, #4ecdc4 0%, transparent 50%), radial-gradient(ellipse at 40% 40%, #45b7d1 0%, transparent 50%); animation: geometricFlow 8s ease-in-out infinite; }
+@keyframes geometricFlow { 0%,100%{background-size:100% 100%,100% 100%,100% 100%} 50%{background-size:130% 130%,130% 130%,130% 130%} }
+
+/* Additional Gradients */
+.sunset-glow { background: linear-gradient(45deg, #ff6b35, #f7931e, #ffd23f, #ff6b35); background-size: 400% 400%; animation: sunsetGlow 6s ease-in-out infinite; }
+@keyframes sunsetGlow { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
+
+.ocean-depths { background: linear-gradient(45deg, #1e3c72, #2a5298, #1e3c72, #2a5298); background-size: 400% 400%; animation: oceanDepths 5s ease-in-out infinite; }
+@keyframes oceanDepths { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
+
+.forest-mist { background: linear-gradient(45deg, #2d5a27, #4a7c59, #6b8e23, #2d5a27); background-size: 400% 400%; animation: forestMist 7s ease-in-out infinite; }
+@keyframes forestMist { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
+
+.desert-sand { background: linear-gradient(45deg, #d4a574, #8b4513, #cd853f, #daa520); background-size: 400% 400%; animation: desertSand 6s ease-in-out infinite; }
+@keyframes desertSand { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
+
+.aurora-dream { background: linear-gradient(45deg, #ff6b9d, #c44569, #f39c12, #e74c3c, #9b59b6, #3498db, #1abc9c, #ff6b9d); background-size: 400% 400%; animation: auroraDream 8s ease-in-out infinite; }
+@keyframes auroraDream { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
