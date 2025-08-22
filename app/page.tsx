@@ -243,7 +243,7 @@ export default function Home() {
                 Pattern Library
               </h2>
               <p className="text-lg text-gray-600">
-                Tap on mobile or hover on desktop to see options
+                ✨ Discover hidden magic • Hover or tap to unlock pattern secrets ✨
               </p>
             </div>
 
