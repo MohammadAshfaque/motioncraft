@@ -1,11 +1,11 @@
-# MotionCraft - Background Animation Patterns
+# MotionCraft - Background Animation Library
 
 A modern Next.js application showcasing professional background animation patterns with real-time preview and instant CSS copying.
 
 ## Features
 
 - 🎨 **40+ Working Animations**: All animations are tested and working perfectly
-- 🎯 **Real-time Preview**: Click any pattern to see it as your page background
+- 🎯 **Real-time Preview**: Click any animation to see it as your page background
 - 📋 **Instant Copy**: Copy CSS code with one click
 - 🏷️ **Category Filtering**: Filter animations by type (Gradients, Geometry, Effects, Decorative)
 - 🎭 **Smooth Transitions**: Framer Motion powered animations
@@ -97,12 +97,12 @@ A modern Next.js application showcasing professional background animation patter
 
 ## Usage
 
-1. **Browse Patterns**: Scroll through the animation patterns
+1. **Browse Animations**: Scroll through the animation library
 2. **Filter by Category**: Use the category buttons to filter by type
 3. **Preview Animation**: Click the preview button to see as background
 4. **Copy CSS**: Click the copy button to get the CSS code
 5. **Exit Preview**: Click the X button to return to default background
-6. **Toggle Favorites**: Star patterns you like for quick access
+6. **Toggle Favorites**: Star animations you like for quick access
 
 ## Project Structure
 
@@ -114,10 +114,10 @@ motioncraft/
 │   ├── page.tsx             # Main page with pattern library
 │   └── not-found.tsx        # 404 page
 ├── components/
-│   ├── pattern-card.tsx     # Individual pattern card
+│   ├── animation-card.tsx   # Individual animation card
 │   └── category-filter.tsx  # Category navigation
 ├── lib/
-│   ├── animations.ts        # Animation pattern data
+│   ├── animations.ts        # Animation data
 │   └── utils.ts             # Utility functions
 ├── LICENSE                  # MIT License
 ├── README.md                # Project documentation
@@ -130,7 +130,7 @@ motioncraft/
 
 1. **Add animation data** to `lib/animations.ts`
 2. **Add CSS classes** to `app/globals.css`
-3. **Update pattern card** if needed for special effects
+3. **Update animation card** if needed for special effects
 
 ### Styling
 
@@ -154,7 +154,7 @@ We welcome contributions! Here's how you can help:
 
 1. **Fork the repository**
 2. **Create a feature branch**: `git checkout -b feature/amazing-animation`
-3. **Add your animation pattern** to the library
+3. **Add your animation** to the library
 4. **Test thoroughly** to ensure it works
 5. **Commit your changes**: `git commit -m 'Add amazing animation'`
 6. **Push to the branch**: `git push origin feature/amazing-animation`
@@ -164,7 +164,7 @@ We welcome contributions! Here's how you can help:
 
 - **Follow existing code style** and patterns
 - **Test animations** on different screen sizes
-- **Add descriptions** for new patterns
+- **Add descriptions** for new animations
 - **Ensure accessibility** for all users
 - **Update documentation** if needed
 

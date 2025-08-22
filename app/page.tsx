@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, Star, Eye, X, Copy, Heart, Code, Github, Twitter, Sparkles, Palette, Zap } from 'lucide-react';
-import { PatternCard } from '@/components/pattern-card';
+import { AnimationCard } from '@/components/animation-card';
 import { CategoryFilter } from '@/components/category-filter';
 import { animationPatterns } from '@/lib/animations';
 import { cn } from '@/lib/utils';
@@ -240,10 +240,10 @@ export default function Home() {
             {/* Header */}
             <div className="text-center mb-12">
               <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent mb-4">
-                Pattern Library
+                                 Animation Library
               </h2>
               <p className="text-lg text-gray-600">
-                ✨ Discover hidden magic • Hover or tap to unlock pattern secrets ✨
+                                 ✨ Discover hidden magic • Hover or tap to unlock animation secrets ✨
               </p>
             </div>
 
@@ -260,24 +260,24 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 mb-12">
               {/* Search Bar */}
               <div className="relative flex-1 max-w-md">
-                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-                <input
-                  type="text"
-                  placeholder="Search patterns..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-12 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/90 backdrop-blur-sm text-gray-900 placeholder-gray-500"
-                />
+                                 <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                 <input
+                   type="text"
+                   placeholder="Search animations..."
+                   value={searchQuery}
+                   onChange={(e) => setSearchQuery(e.target.value)}
+                   className="w-full pl-12 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/90 backdrop-blur-sm text-gray-900 placeholder-gray-500"
+                 />
               </div>
               
-              {/* Pattern Count */}
-              <div className="text-xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
-                {filteredPatterns.length} patterns
-              </div>
+                             {/* Animation Count */}
+               <div className="text-xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
+                 {filteredPatterns.length} animations
+               </div>
             </div>
 
-            {/* Patterns Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                         {/* Animations Grid */}
+             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
               <AnimatePresence mode="popLayout">
                 {filteredPatterns.map((pattern, index) => (
                   <motion.div
@@ -291,7 +291,7 @@ export default function Home() {
                     }}
                     layout
                   >
-                    <PatternCard
+                    <AnimationCard
                       pattern={pattern}
                       isFavorite={favorites.includes(pattern.id)}
                       isPreviewing={previewingPattern === pattern.id}

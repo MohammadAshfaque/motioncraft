@@ -5,7 +5,7 @@ import { Star, Hash, Copy, Eye, X } from 'lucide-react';
 import { AnimationPattern } from '@/lib/animations';
 import { cn } from '@/lib/utils';
 
-interface PatternCardProps {
+interface AnimationCardProps {
   pattern: AnimationPattern;
   isFavorite: boolean;
   isPreviewing: boolean;
@@ -14,7 +14,7 @@ interface PatternCardProps {
   onCopy: (pattern: AnimationPattern) => void;
 }
 
-export function PatternCard({ pattern, isFavorite, isPreviewing, onToggleFavorite, onPreview, onCopy }: PatternCardProps) {
+export function AnimationCard({ pattern, isFavorite, isPreviewing, onToggleFavorite, onPreview, onCopy }: AnimationCardProps) {
   // Use pattern ID to generate consistent colors
   const colorIndex = pattern.id.charCodeAt(0) % 10;
   const tagColorIndex = pattern.id.charCodeAt(1) % 8;
