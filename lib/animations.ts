@@ -40,18 +40,6 @@ export const animationPatterns: AnimationPattern[] = [
   0% { transform: scale(1); opacity: 0.8; }
   100% { transform: scale(1.05); opacity: 1; }
 }` },
-  { id: 'morphing-gradient', title: 'Morphing Gradient', description: 'Gradient that morphs directions/colors', category: 'gradients', bgClass: 'morphing-gradient', code: `/* Morphing Gradient */
-.morphing-gradient {
-  background: linear-gradient(45deg, #667eea, #764ba2);
-  animation: morphGradient 4s ease-in-out infinite;
-}
-@keyframes morphGradient {
-  0% { background: linear-gradient(45deg, #667eea, #764ba2); }
-  25% { background: linear-gradient(135deg, #ff6b6b, #feca57); }
-  50% { background: linear-gradient(225deg, #48cae4, #023047); }
-  75% { background: linear-gradient(315deg, #06ffa5, #0d7377); }
-  100% { background: linear-gradient(45deg, #667eea, #764ba2); }
-}` },
 
   // Geometric Patterns
   { id: 'rotating-conic', title: 'Rotating Conic', description: 'Rotating conic gradient', category: 'geometry', bgClass: 'rotating-conic', code: `/* Rotating Conic */
@@ -242,6 +230,20 @@ export const animationPatterns: AnimationPattern[] = [
   { id: 'aurora-dream', title: 'Aurora Dream', description: 'Dreamy aurora gradient', category: 'gradients', bgClass: 'aurora-dream', code: `/* Aurora Dream */
 .aurora-dream { background: linear-gradient(45deg, #ff6b9d, #c44569, #f39c12, #e74c3c, #9b59b6, #3498db, #1abc9c, #ff6b9d); background-size: 400% 400%; animation: auroraDream 8s ease-in-out infinite; }
 @keyframes auroraDream { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }` },
+
+  // ================================
+  // MODERN 2025 ANIMATIONS
+  // ================================
+
+  // Gradient Mesh & Modern Blends
+  { id: 'mesh-gradient', title: 'Mesh Gradient', description: 'Advanced mesh gradient with floating effect', category: 'modern', bgClass: 'mesh-gradient', code: `/* Mesh Gradient */
+.mesh-gradient { background: radial-gradient(circle at 0% 0%, #667eea 0%, transparent 40%), radial-gradient(circle at 100% 0%, #764ba2 0%, transparent 40%), radial-gradient(circle at 0% 100%, #f093fb 0%, transparent 40%), radial-gradient(circle at 100% 100%, #f5576c 0%, transparent 40%), radial-gradient(circle at 50% 50%, #4facfe 0%, transparent 40%), linear-gradient(135deg, #0c0c0c, #1a1a1a); animation: meshFloat 8s ease-in-out infinite; }
+@keyframes meshFloat { 0%, 100% { background-size: 80% 80%, 80% 80%, 80% 80%, 80% 80%, 60% 60%, 100% 100%; background-position: 0% 0%, 100% 0%, 0% 100%, 100% 100%, 50% 50%, 0% 0%; } 50% { background-size: 120% 120%, 120% 120%, 120% 120%, 120% 120%, 100% 100%, 100% 100%; background-position: 20% 20%, 80% 20%, 20% 80%, 80% 80%, 50% 50%, 0% 0%; } }` },
+
+  { id: 'gradient-noise', title: 'Gradient Noise', description: 'Dynamic gradient with animated noise effect', category: 'modern', bgClass: 'gradient-noise', code: `/* Gradient Noise */
+.gradient-noise { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); position: relative; overflow: hidden; }
+.gradient-noise::before { content: ''; position: absolute; inset: 0; background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><filter id="noise"><feTurbulence baseFrequency="0.9" numOctaves="3" result="noise" seed="1"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="10"/></filter><rect width="100%" height="100%" filter="url(%23noise)" opacity="0.4"/></svg>'); opacity: 0.3; animation: noiseShift 4s linear infinite; }
+@keyframes noiseShift { 0%, 100% { transform: translate(0, 0); } 25% { transform: translate(-5px, 5px); } 50% { transform: translate(5px, -5px); } 75% { transform: translate(-3px, -3px); } }` },
 ];
 
 export const categories = [
@@ -252,4 +254,7 @@ export const categories = [
   { id: 'grids', name: 'Lines & Grids' },
   { id: 'particles', name: 'Particles' },
   { id: 'organic', name: 'Nature & Organic' },
+  { id: 'decorative', name: 'Decorative' },
+  { id: 'glassmorphism', name: 'Glassmorphism' },
+  { id: 'modern', name: 'Modern Blends' },
 ];

@@ -14,7 +14,7 @@ export default function Home() {
   const [searchQuery, setSearchQuery] = useState('');
   const [favorites, setFavorites] = useState<string[]>([]);
   const [previewingPattern, setPreviewingPattern] = useState<string | null>(null);
-
+  
   const filteredPatterns = animationPatterns.filter(pattern => {
     const matchesCategory = selectedCategory === 'all' || 
                            (selectedCategory === 'favourites' ? favorites.includes(pattern.id) : pattern.category === selectedCategory);
@@ -36,6 +36,11 @@ export default function Home() {
       setPreviewingPattern(null);
     } else {
       setPreviewingPattern(patternId);
+      // Auto-scroll to top when previewing so user can see the preview
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
     }
   };
 
@@ -117,6 +122,85 @@ export default function Home() {
             "absolute inset-0 transition-all duration-1000",
             currentPattern.bgClass
           )} />
+          
+          {/* Preview Controls */}
+          <div className="absolute top-4 right-4 z-20">
+            <button
+              onClick={() => {
+                setPreviewingPattern(null);
+              }}
+              className="bg-white/90 backdrop-blur-sm rounded-full p-3 shadow-lg hover:bg-white transition-all duration-200 group"
+            >
+              <X className="w-5 h-5 text-gray-700 group-hover:text-gray-900" />
+            </button>
+          </div>
+
+          {/* Scroll Down Arrow */}
+          <div className="absolute bottom-6 right-6 z-20">
+            <button
+              onClick={() => {
+                // First close the preview
+                setPreviewingPattern(null);
+                
+                // Scroll to the animation gallery section
+                setTimeout(() => {
+                  const animationGallery = document.getElementById('animation-gallery');
+                  if (animationGallery) {
+                    animationGallery.scrollIntoView({
+                      behavior: 'smooth',
+                      block: 'start'
+                    });
+                  } else {
+                    // Fallback: scroll down by a large amount
+                    window.scrollTo({
+                      top: 1000,
+                      behavior: 'smooth'
+                    });
+                  }
+                }, 200);
+              }}
+              className="bg-white/90 backdrop-blur-sm rounded-full p-3 shadow-lg hover:bg-white hover:scale-110 transition-all duration-200 group"
+              title="Return to Animation Gallery"
+            >
+              <motion.div
+                animate={{ y: [0, 4, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <svg 
+                  className="w-5 h-5 text-gray-700 group-hover:text-gray-900" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round" 
+                    strokeWidth={2} 
+                    d="M19 14l-7 7m0 0l-7-7m7 7V3" 
+                  />
+                </svg>
+              </motion.div>
+            </button>
+          </div>
+          
+          {/* Preview Info */}
+          <div className="absolute bottom-4 left-4 z-20">
+            <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-4 shadow-lg max-w-sm">
+              <h3 className="text-lg font-bold text-gray-800 mb-2">{currentPattern?.title}</h3>
+              <p className="text-sm text-gray-600 mb-3">{currentPattern?.description}</p>
+              <div className="flex items-center justify-between">
+                <span className="px-2 py-1 bg-blue-100 text-blue-700 text-xs font-medium rounded-full">
+                  {currentPattern?.category}
+                </span>
+                <button
+                  onClick={() => handleCopy(currentPattern!)}
+                  className="px-3 py-1.5 bg-green-500 text-white text-xs font-medium rounded-lg hover:bg-green-600 transition-colors"
+                >
+                  Copy CSS
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       )}
 
@@ -165,6 +249,9 @@ export default function Home() {
               <span className="bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
                 MotionCraft
               </span>
+              <span className="block text-2xl md:text-3xl font-normal text-blue-600 mt-2">
+                2025 Edition
+              </span>
             </motion.h1>
             
             <motion.p 
@@ -173,7 +260,11 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Unleash your creativity with our collection of stunning animated backgrounds. From subtle gradients to dynamic patterns, create eye-catching designs that bring your projects to life.
+              Discover cutting-edge animations featuring the latest 2025 design trends: 
+              <span className="font-semibold text-blue-600"> Glassmorphism</span>, 
+              <span className="font-semibold text-purple-600"> Modern Blends</span>, and 
+              <span className="font-semibold text-pink-600"> Advanced Gradients</span>. 
+              Create stunning, modern interfaces that bring your projects to life.
             </motion.p>
 
             {/* Action Buttons */}
@@ -208,9 +299,9 @@ export default function Home() {
                 <span className="font-semibold">Join Community</span>
               </button>
 
-              <button className="flex items-center space-x-3 bg-gray-100 text-gray-700 rounded-xl px-6 py-4 hover:bg-gray-200 transition-all duration-200 group">
-                <Palette className="w-5 h-5" />
-                <span className="font-semibold">Explore Gallery</span>
+              <button className="flex items-center space-x-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-xl px-6 py-4 hover:from-blue-600 hover:to-purple-700 transition-all duration-200 group shadow-lg">
+                <Sparkles className="w-5 h-5" />
+                <span className="font-semibold">2025 Trends</span>
               </button>
             </motion.div>
 
@@ -222,29 +313,84 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.6 }}
             >
               <div>
-                <div className="text-3xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">100+ Patterns</div>
+                <div className="text-3xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">150+ Patterns</div>
+                <div className="text-sm text-gray-500 mt-1">Including 2025 trends</div>
               </div>
               <div>
                 <div className="text-3xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">100% Free</div>
+                <div className="text-sm text-gray-500 mt-1">Premium quality</div>
               </div>
               <div>
-                <div className="text-3xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">CSS & Tailwind</div>
+                <div className="text-3xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">Modern CSS</div>
+                <div className="text-sm text-gray-500 mt-1">Latest standards</div>
               </div>
             </motion.div>
+
+            {/* 2025 Trends Showcase */}
+            <motion.section 
+              className="py-20 bg-gradient-to-br from-gray-50 to-blue-50"
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.8 }}
+            >
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="text-center mb-16">
+                  <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-6">
+                    ✨ 2025 Design Trends ✨
+                  </h2>
+                  <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Experience the future of web design with our cutting-edge animation collection
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  {/* Glassmorphism */}
+                  <motion.div 
+                    className="text-center group"
+                    whileHover={{ y: -10 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <div className="w-20 h-20 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-blue-400/20 to-purple-400/20 backdrop-blur-sm border border-white/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-500 rounded-lg" />
+                    </div>
+                    <h3 className="text-lg font-semibold text-gray-800 mb-2">Glassmorphism</h3>
+                    <p className="text-sm text-gray-600">Frosted glass effects with modern blur aesthetics</p>
+                  </motion.div>
+
+                  {/* Modern Blends */}
+                  <motion.div 
+                    className="text-center group"
+                    whileHover={{ y: -10 }}
+                    transition={{ duration: 0.3, delay: 0.1 }}
+                  >
+                    <div className="w-20 h-20 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-pink-500 to-purple-500 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <div className="w-8 h-8 bg-white/20 rounded-full animate-pulse" />
+                    </div>
+                    <h3 className="text-lg font-semibold text-gray-800 mb-2">Modern Blends</h3>
+                    <p className="text-sm text-gray-600">Advanced gradient techniques with organic shapes</p>
+                  </motion.div>
+                </div>
+              </div>
+            </motion.section>
           </div>
         </section>
 
         {/* Pattern Library Section */}
-        <section className="py-16 bg-white/60 backdrop-blur-sm">
+        <section id="animation-gallery" className="py-16 bg-white/60 backdrop-blur-sm">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Header */}
             <div className="text-center mb-12">
               <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent mb-4">
-                                 Animation Library
+                ✨ 2025 Animation Library ✨
               </h2>
-              <p className="text-lg text-gray-600">
-                                 ✨ Discover hidden magic • Hover or tap to unlock animation secrets ✨
+              <p className="text-lg text-gray-600 mb-4">
+                Discover hidden magic • Hover or tap to unlock animation secrets
               </p>
+              <div className="flex flex-wrap justify-center gap-3 text-sm">
+                <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full font-medium">Glassmorphism</span>
+                <span className="px-3 py-1 bg-purple-100 text-purple-700 rounded-full font-medium">Modern Blends</span>
+                <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full font-medium">Advanced Gradients</span>
+              </div>
             </div>
 
             {/* Navigation Tabs */}
@@ -277,7 +423,7 @@ export default function Home() {
             </div>
 
                          {/* Animations Grid */}
-             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+             <div id="animations-grid" className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
               <AnimatePresence mode="popLayout">
                 {filteredPatterns.map((pattern, index) => (
                   <motion.div
