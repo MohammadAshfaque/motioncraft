@@ -279,8 +279,8 @@ export default function Home() {
                   <Code className="w-4 h-4 text-white" />
                 </div>
                 <div className="text-left">
-                  <div className="font-semibold text-gray-800">Instant Copy</div>
-                  <div className="text-sm text-gray-500">Ready-to-use CSS code</div>
+                  <div className="font-semibold text-gray-800">Copy</div>
+                  <div className="text-sm text-gray-500">Elegant code</div>
                 </div>
               </button>
 
@@ -289,14 +289,14 @@ export default function Home() {
                   <Eye className="w-4 h-4 text-white" />
                 </div>
                 <div className="text-left">
-                  <div className="font-semibold text-gray-800">Live Preview</div>
-                  <div className="text-sm text-gray-500">See patterns in action</div>
+                  <div className="font-semibold text-gray-800">Preview</div>
+                  <div className="text-sm text-gray-500">Visual experience</div>
                 </div>
               </button>
 
               <button className="flex items-center space-x-3 bg-black text-white rounded-xl px-6 py-4 hover:bg-gray-800 transition-all duration-200 group">
                 <Heart className="w-5 h-5" />
-                <span className="font-semibold">Join Community</span>
+                <span className="font-semibold">Connect</span>
               </button>
 
               <button className="flex items-center space-x-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-xl px-6 py-4 hover:from-blue-600 hover:to-purple-700 transition-all duration-200 group shadow-lg">
