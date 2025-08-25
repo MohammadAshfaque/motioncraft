@@ -59,7 +59,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white relative overflow-hidden">
       {/* Animated Grid Background */}
-      <div className="fixed inset-0 z-0 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
+      <div className={`fixed inset-0 z-0 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 ${currentPattern ? 'hidden' : ''}`}>
         {/* Professional Colorful Dotted Pops Background */}
         <div className="absolute inset-0 overflow-hidden">
           {/* Large floating dots */}
